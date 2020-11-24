@@ -103,7 +103,10 @@ def usuario_inserir():
 
 @app.route('/buscar')
 def u_buscar ( ):
+    # forma 1
     busca = request.args['search']
+
+    # forma 2
     busca = request.args.get('search', 'valor default')
 
     return busca
@@ -114,12 +117,70 @@ def u_buscar_get ( ):
     return render_template('u_buscar_get.html', logado = True)
 
 
+
+
+
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        return render_template('register.html')
+    elif request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password1 = request.form['password1']
+        password2 = request.form['password2']
+
+        return f'username: {username}'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+@app.route('/do-login', methods=['POST'])
+def do_login():
+    username = request.form['username']
+    password = request.form['password']
+
+    print(f'user:{username} password:{password}')
+
+    return f'user:{username} password:{password}'
+
+
+
+
+
+
 @app.route('/buscar/post', methods=['GET', 'POST'])
 def u_buscar_post ( ):
     if request.method == 'POST':
+
+        # forma 1
         busca = request.form['search']
-        busca = request.form.get('search', 'valor default') 
+
+        # forma 2
+        busca = request.form.get('search', 'valor default')
+        
         return busca
+    
     return render_template('u_buscar_post.html', logado = True)   
 
 @app.route('/produto/id')

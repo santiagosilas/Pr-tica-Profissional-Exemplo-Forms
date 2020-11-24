@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block content %}
+<form class="py-5" method="post" action="{{url_for('register')}}">
+    <input name="username" type="text" placeholder="username"><br>
+    <input name="email" type="email" placeholder="e-mail"><br>
+    <input name="password1" type="password" placeholder="password"><br>
+    <input name="password2" type="password" placeholder="repeat password"><br>
+    <input type="submit" value="Register" class="btn btn-info"><br>
+</form>
+{% endblock %}
